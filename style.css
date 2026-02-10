@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  --bg: #fe03314e;
+  --bgCard: #17161610;
+  --bSBefore: 60px 20px #ffb3c1, 130px 10px #ffb3c1, 190px 20px #ffb3c1,
+    260px -5px #ffb3c1, 340px 20px #ffb3c1;
+  --bSAfter: 50px 20px #ffccd5, 120px 40px #ffccd5, 200px 15px #ffccd5,
+    260px 30px #ffccd5, 330px 30px #ffccd5, 380px 10px #ffccd5;
+  --bSClouds: 55px 30px #fff0f3, 125px 10px #fff0f3, 175px 20px #fff0f3,
+    250px 10px #fff0f3, 320px 5px #fff0f3, 380px 10px #fff0f3;
+  --rHeart: #c9184a;
+  --lHeart: #ff4d6d;
+  --text: #800f2f;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+}
+
+.valentines-day-card {
+  cursor: pointer;
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background-color: var(--bgCard);
+  overflow: hidden;
+  border: 10px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.4);
+}
+
+.valentines-day-card:before {
+  content: "";
+  position: absolute;
+  background-color: #ffb3c1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 140px;
+  left: -25px;
+  box-shadow: var(--bSBefore);
+}
+
+.valentines-day-card:after {
+  content: "";
+  position: absolute;
+  background-color: #ffccd5;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 160px;
+  left: -40px;
+  box-shadow: var(--bSAfter);
+}
+
+.clouds {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #fff0f3;
+  z-index: 5;
+  top: 210px;
+  left: -20px;
+  box-shadow: var(--bSClouds);
+}
+
+.hearts {
+  position: absolute;
+  z-index: 2;
+}
+
+.heartOne {
+  left: 100px;
+  top: 250px;
+  animation: up 4s linear forwards 1s;
+}
+
+.heartTwo {
+  left: 270px;
+  top: 230px;
+  animation: up 5s linear forwards 1.8s;
+}
+
+.heartThree {
+  left: 85px;
+  top: 415px;
+  animation: up 5s linear forwards 3s;
+}
+
+.heartFour {
+  left: 320px;
+  top: 380px;
+  animation: upTwo 9s linear infinite 3.5s;
+}
+
+.heartFive {
+  left: 150px;
+  top: 400px;
+  animation: upTwo 13s linear infinite 4.5s;
+}
+
+.heartOne,
+.heartTwo,
+.heartThree,
+.heartFour,
+.heartFive {
+  position: absolute;
+}
+
+.right-side:before,
+.right-side:after,
+.left-side:before,
+.left-side:after {
+  position: absolute;
+  content: "";
+  animation: move 1s ease infinite;
+}
+
+.right-side:before {
+  border-radius: 50% 50% 50% 0;
+  width: 21px;
+  height: 20px;
+  background-color: var(--rHeart);
+}
+
+.right-side:after {
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid var(--rHeart);
+  top: 19px;
+}
+
+.left-side:before {
+  border-radius: 50% 50% 0 50%;
+  width: 20px;
+  height: 20px;
+  left: -20px;
+  background-color: var(--lHeart);
+}
+
+.left-side:after {
+  border-bottom: 10px solid transparent;
+  border-right: 15px solid var(--lHeart);
+  top: 19px;
+  left: -15px;
+}
+
+@keyframes move {
+  0%, 100% { transform: rotateY(0); }
+  50% { transform: rotateY(-45deg); }
+}
+
+@keyframes up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+@keyframes upTwo {
+  from { transform: translateY(0); }
+  to { transform: translateY(-450px); }
+}
+
+.text {
+  position: absolute;
+  color: var(--text);
+  font-size: 26px;
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  top: 110px; /* ✅ внутри карточки */
+  z-index: 10;
+  transition: 0.3s;
+  padding: 0 10px;
+}
+
+.text.active span {
+  display: none;
+}
+
+.text.active::before {
+  content: "Самой прекрасной девушки на свете 💖";
+  font-size: 25px;
+}
